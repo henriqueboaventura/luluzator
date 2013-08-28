@@ -39,12 +39,14 @@ function hashtagize(str) {
     .replace(/\,/g,'Virgula #')
     .replace(/\?/g,'Interrogacao #');
 
+  content = content.replace(/ /g, '<br/>');
+
   console.log(content[content.length - 1]);
   if(content[content.length - 1] == '#') {
     content = content.substring(0, content.length - 1);
   }
   
-  return '<br/>#' + content;
+  return '<br/><br/>#' + content;
 }
 
 $(document).ready(function() {
@@ -54,6 +56,8 @@ $(document).ready(function() {
 
     //inicia a porcaria
     content = lulutize(content);
+
+    content = content + hashtagize($('#hashtag').val());
 
     var result = $('#result');
 
